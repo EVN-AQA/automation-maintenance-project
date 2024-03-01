@@ -10,11 +10,11 @@
         </packages>
     </test>
 
-<!--    <test name="Android 9">-->
-<!--        <parameter name="device" value="android_9"/>-->
-<!--        <packages>-->
-<!--            <package name="com.epam.qavn.webdriverio.loginPage.*" />-->
-<!--        </packages>-->
-<!--    </test>-->
+    <test name="Android 9">
+        <parameter name="device" value="android_9"/>
+        <packages>
+            <package name="com.epam.qavn.webdriverio.loginPage.*" />
+        </packages>
+    </test>
 
 </suite>

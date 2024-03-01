@@ -2,7 +2,6 @@ package com.epam.qavn.core.driverManager;
 
 import com.epam.qavn.objects.DeviceInformation;
 import io.appium.java_client.android.AndroidDriver;
-//import io.appium.java_client.remote.MobileCapabilityType;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
