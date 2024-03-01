@@ -8,5 +8,6 @@ public class HeaderPageUI {
     public static final By LOGIN_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-login");
     public static final By CART_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-cart");
     public static final By WISHLIST_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-wishlist");
+    public static final By LOGOUT_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-logout");
 
 }
