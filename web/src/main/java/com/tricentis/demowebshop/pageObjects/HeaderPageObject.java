@@ -20,11 +20,17 @@ public class HeaderPageObject extends BasePage {
         clickToElement(driver, HeaderPageUI.LOGIN_HLK_BY_CSS);
     }
 
+    public void clickRegisterHyperlink() {
+        clickToElement(driver, HeaderPageUI.REGISTER_HLK_BY_CSS);
+    }
+
     public boolean isHomeButtonDisplayed() {
         return isElementDisplayed(driver, HeaderPageUI.HOME_BTN_BY_CSS);
     }
     public boolean isLogoutHyperlinkDisplayed() {
         return isElementDisplayed(driver, HeaderPageUI.LOGOUT_HLK_BY_CSS);
     }
-
+    public String getUserEmail() {
+        return getElementText(driver,HeaderPageUI.CUSTOMER_INFO_LINK_BY_XPATH);
+    }
 }

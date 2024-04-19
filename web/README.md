@@ -19,3 +19,7 @@ For browser Firefox:
    ```shell
     mvn test -DBrowser=FIREFOX
    ```
+Run cucumber tag:
+   ```shell
+   mvn test -D"cucumber.filter.tags=@tagName"
+   ```

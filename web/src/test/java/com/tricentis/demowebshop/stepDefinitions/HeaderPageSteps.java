@@ -22,6 +22,11 @@ public class HeaderPageSteps {
         headerPageObject.clickLoginHyperlink();
     }
 
+    @When("I click the register hyperlink on Header page")
+    public void iClickTheRegisterHyperlink() {
+        headerPageObject.clickRegisterHyperlink();
+    }
+
     @Then("I verify the home button is displayed")
     public void iVerifyTheHomeButtonIsDisplayed() {
         Assert.assertTrue(headerPageObject.isHomeButtonDisplayed());

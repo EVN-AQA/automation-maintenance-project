@@ -9,5 +9,5 @@ public class HeaderPageUI {
     public static final By CART_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-cart");
     public static final By WISHLIST_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-wishlist");
     public static final By LOGOUT_HLK_BY_CSS = By.cssSelector("div.header-links a.ico-logout");
-
+    public static final By CUSTOMER_INFO_LINK_BY_XPATH = By.xpath("//div[@class='header-links']//a[@href='/customer/info']");
 }

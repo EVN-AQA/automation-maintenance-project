@@ -23,6 +23,7 @@ public class BasePage {
     protected Logger logger;
     protected PropertyReader propertyReader = new PropertyReader(GlobalConstants.CONFIG_FILE_KEY);
     private WebDriverWait wait;
+    WebElement element;
 
     protected BasePage() {
         logger = LogManager.getLogger(getClass());
@@ -37,6 +38,9 @@ public class BasePage {
     }
 
     public WebElement getElement(WebDriver driver, By by) {
+        return driver.findElement(by);
+    }
+    public WebElement getElement(WebDriver driver, By by, String... values) {
         return driver.findElement(by);
     }
 
@@ -70,9 +74,22 @@ public class BasePage {
         getElement(driver, by).sendKeys(value);
     }
 
+    public void sendKeysToElement(WebDriver driver, String locator, String key, String... values) {
+		locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+		element.clear();
+		element.sendKeys(key);
+	}
+
     public void clickToElement(WebDriver driver, By by) {
         getElement(driver, by).click();
     }
+
+    public void clickToElement(WebDriver driver, String locator, String... values) {
+		locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+		element.click();
+	}
 
     public void hoverAndClickToElement(WebDriver driver, By by) {
         Actions builder = new Actions(driver);
@@ -111,6 +128,27 @@ public class BasePage {
     public boolean isElementDisplayed(WebDriver driver, By by) {
         return getElement(driver, by).isDisplayed();
     }
+    public boolean isElementDisplayed(WebDriver driver, String locator, String... values) {
+		locator = String.format(locator, (Object[]) values);
+        By by = By.xpath(locator);
+		return getElement(driver, by).isDisplayed();
+	}
+    public boolean isElementSelected(WebDriver driver, By by) {
+		element = driver.findElement(by);
+		return element.isSelected();
+	}
+    public void checkCheckbox(WebDriver driver, By by) {
+		if (!isElementSelected(driver, by)) {
+			clickToElement(driver, by);
+		}
+	}
+	public void checkCheckbox(WebDriver driver, String locator, String... values) {
+		locator = String.format(locator, (Object[]) values);
+        By by = By.xpath(locator);
+		if (!isElementSelected(driver, by)) {
+			clickToElement(driver, by);
+		}
+	}
 
     public void waitForPageLoadedCompletely(WebDriver driver, Duration timeOutInSeconds) {
         wait = new WebDriverWait(driver, timeOutInSeconds);
