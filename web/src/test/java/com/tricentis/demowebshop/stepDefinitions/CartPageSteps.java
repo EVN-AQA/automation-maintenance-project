@@ -43,6 +43,7 @@ public class CartPageSteps {
 
     @Then("I should see the subtotal before tax of products displayed correctly")
     public void iverifyTotalInCart() {
-        Assert.assertEquals(cartPageObject.getTotalBeforeTax(), cartPageObject.calculateTotalBeforeTax());
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(cartPageObject.getTotalBeforeTax()).isEqualTo(cartPageObject.calculateTotalBeforeTax());
     }
 }

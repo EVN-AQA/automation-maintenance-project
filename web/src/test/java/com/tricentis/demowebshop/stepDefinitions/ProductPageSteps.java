@@ -41,12 +41,12 @@ public class ProductPageSteps {
     public void iGoToProduct(String productTitle) {
         productPageObject.goToProduct(productTitle);
     }
-    @When("When I click on Add to cart button in product details page")
+    @When("I click on Add to cart button in product details page")
     public void iAddProductToCartInProductPage() {
         productPageObject.clickAddToCartBtnInProductPage();
     }
-    @When("When I choose option {string} in dropdown list {string}")
-    public void iChooseDropdownList(String dropdownName, String option) {
+    @When("I choose option {string} in dropdown list {string}")
+    public void iChooseDropdownList(String option, String dropdownName) {
         productPageObject.chooseDropdownList(dropdownName,option);
     }
 }

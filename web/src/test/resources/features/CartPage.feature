@@ -50,7 +50,7 @@ Feature: Shopping cart Page
    Scenario Outline:  MP0021, MP0022	Add multiple products to cart
       When I navigate to product category "<productCategory1>"
       When I add product "<productTitle1>" to cart
-      When I navigate to product sub-category "<productSubCategory>" page of category "<productCategory2>"
+      When I navigate to product category "<productCategory2>"
       When I add product "<productTitle2>" to cart
       Then I should see success notification bar displayed
       When I navigate to shopping cart from link in the notification bar
@@ -60,5 +60,5 @@ Feature: Shopping cart Page
       When I remove all items in the shopping cart
       Then I should see text informing the shopping cart is empty
       Examples:
-         | productTitle1 | productTitle2    | productCategory1 | productSubCategory | productCategory2 |
-         | Fiction       | 14.1-inch Laptop | Books            | Notebooks          | Computers        |
+         | productTitle1 | productTitle2    | productCategory1  | productCategory2 |
+         | Fiction       | Black & White Diamond Heart | Books  | Jewelry        |

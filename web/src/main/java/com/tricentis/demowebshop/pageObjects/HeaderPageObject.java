@@ -1,5 +1,5 @@
 package com.tricentis.demowebshop.pageObjects;
-
+import java.time.Duration;
 import com.tricentis.demowebshop.core.BasePage;
 import com.tricentis.demowebshop.pageUIs.HeaderPageUI;
 import org.openqa.selenium.WebDriver;
@@ -35,6 +35,7 @@ public class HeaderPageObject extends BasePage {
     }
 
     public void goToSubProductPage(String productCategory, String productSubCategory) {
+        waitForPageLoadedCompletely(driver,Duration.ofSeconds(4));
         hoverElement(driver, HeaderPageUI.PRODUCT_CATEGORY_XPATH,productCategory);
         clickToElement(driver, HeaderPageUI.PRODUCT_SUBCATEGORY_XPATH,productSubCategory);
     }

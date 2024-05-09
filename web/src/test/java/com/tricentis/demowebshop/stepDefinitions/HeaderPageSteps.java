@@ -41,7 +41,7 @@ public class HeaderPageSteps {
         headerPageObject.goToSubProductPage(productCategory,productSubCategory);
     }
 
-    @When("I navigate to product category page {string}")
+    @When("I navigate to product category {string}")
     public void iGoToCategoryPage(String productCategory) {
         headerPageObject.goToProductCategoryPage(productCategory);
     }
