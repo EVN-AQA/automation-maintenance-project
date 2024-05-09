@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -24,6 +24,7 @@ public class BasePage {
     protected PropertyReader propertyReader = new PropertyReader(GlobalConstants.CONFIG_FILE_KEY);
     private WebDriverWait wait;
     WebElement element;
+    Select select;
 
     protected BasePage() {
         logger = LogManager.getLogger(getClass());
@@ -57,9 +58,21 @@ public class BasePage {
         return getElement(driver, by).getText();
     }
 
+    public String getElementText(WebDriver driver, String locator, String... values) {
+		locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+		return element.getText();
+	}
+
     public String getElementAttribute(WebDriver driver, By by, String attribute) {
         return driver.findElement(by).getAttribute(attribute);
     }
+
+    public String getElementAttribute(WebDriver driver, String locator, String attributeName, String... values) {
+		locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+		return element.getAttribute(attributeName);
+	}
 
     public String getElementCssValue(WebDriver driver, By by, String value) {
         return driver.findElement(by).getCssValue(value);
@@ -101,6 +114,20 @@ public class BasePage {
         new Actions(driver).moveToElement(getElement(driver, by)).perform();
     }
 
+    public void hoverElement(WebDriver driver, String locator, String... values) {
+        locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+        new Actions(driver).moveToElement(element).perform();
+    }
+
+    public void hoverAndClickToElement(WebDriver driver, String locator, String... values) {
+        locator = String.format(locator, (Object[]) values);
+		element = driver.findElement(By.xpath(locator));
+        Actions builder = new Actions(driver);
+        builder.moveToElement(element).perform();
+        builder.moveToElement(element).click().perform();
+    }
+    
     public void waitAndClickToElement(WebDriver driver, By by, Duration timeOutInSeconds) {
         waitForElementUntilClickable(driver, by, timeOutInSeconds);
         clickToElement(driver, by);
@@ -148,6 +175,19 @@ public class BasePage {
 		if (!isElementSelected(driver, by)) {
 			clickToElement(driver, by);
 		}
+	}
+
+	public void selectItemInDropdownByVisibleText(WebDriver driver, String locator, String valueToSelect) {
+		select = new Select(driver.findElement(By.xpath(locator)));
+		select.selectByVisibleText(valueToSelect);
+	}
+	
+	public void selectItemInDropdownByVisibleText(WebDriver driver, String locator, String valueToSelect, String... values) {
+		locator = String.format(locator, (Object[]) values);
+        By by = By.xpath(locator);
+		waitForElementUntilVisible(driver, by,GlobalConstants.TIME_OUT_LOADING);
+		select = new Select(driver.findElement(By.xpath(locator)));
+		select.selectByVisibleText(valueToSelect);
 	}
 
     public void waitForPageLoadedCompletely(WebDriver driver, Duration timeOutInSeconds) {

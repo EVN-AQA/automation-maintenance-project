@@ -33,4 +33,12 @@ public class HeaderPageObject extends BasePage {
     public String getUserEmail() {
         return getElementText(driver,HeaderPageUI.CUSTOMER_INFO_LINK_BY_XPATH);
     }
+
+    public void goToSubProductPage(String productCategory, String productSubCategory) {
+        hoverElement(driver, HeaderPageUI.PRODUCT_CATEGORY_XPATH,productCategory);
+        clickToElement(driver, HeaderPageUI.PRODUCT_SUBCATEGORY_XPATH,productSubCategory);
+    }
+    public void goToProductCategoryPage(String productCategory) {
+        hoverAndClickToElement(driver, HeaderPageUI.PRODUCT_CATEGORY_XPATH,productCategory);
+    }
 }

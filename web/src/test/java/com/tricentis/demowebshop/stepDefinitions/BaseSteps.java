@@ -18,6 +18,7 @@ public class BaseSteps {
     public BaseSteps() {
         logger = LogManager.getLogger(getClass());
         driver = Hook.driver;
+        driver.manage().window().maximize();
         basePageObject = new BasePageObject(driver);
     }
 

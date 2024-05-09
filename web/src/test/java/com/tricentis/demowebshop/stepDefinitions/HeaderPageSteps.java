@@ -36,4 +36,13 @@ public class HeaderPageSteps {
     public void iVerifyLoginIsSuccess() {
         Assert.assertTrue(headerPageObject.isLogoutHyperlinkDisplayed());
     }
+    @When("I navigate to product sub-category {string} page of category {string}")
+    public void iGoToSubCategoryPage(String productCategory, String productSubCategory) {
+        headerPageObject.goToSubProductPage(productCategory,productSubCategory);
+    }
+
+    @When("I navigate to product category page {string}")
+    public void iGoToCategoryPage(String productCategory) {
+        headerPageObject.goToProductCategoryPage(productCategory);
+    }
 }

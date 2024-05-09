@@ -9,5 +9,6 @@ public class BasePageUI {
     public static final String BTN_XPATH = "//input[@value='%s']";
     public static final String TXTBOX_XPATH = "//input[@id='%s']";
     public static final String LABEL_XPATH ="//label[contains(text(),'%s')]";
+    public static final By LOADING_IMAGE = By.cssSelector("loading-image");
 }
 
