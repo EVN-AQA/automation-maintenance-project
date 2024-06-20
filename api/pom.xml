@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.example</groupId>
     <artifactId>api</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -20,51 +19,40 @@
         <cucumber.picocontainer.version>7.15.0</cucumber.picocontainer.version>
         <assertj.core.version>3.24.2</assertj.core.version>
         <byte.buddy.version>1.13.0</byte.buddy.version>
+        <jackson.version>2.17.1</jackson.version>
+        <java.object.diff.version>0.95</java.object.diff.version>
+        <io.rest.assured.version>4.3.3</io.rest.assured.version>
+        <http.status.code.version>1.1.0</http.status.code.version>
+        <commons.httpclient.version>3.1</commons.httpclient.version>
+
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.3.3</version>
+            <version>${io.rest.assured.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.deevvi/http-status-code -->
         <dependency>
             <groupId>com.deevvi</groupId>
             <artifactId>http-status-code</artifactId>
-            <version>1.1.0</version>
+            <version>${http.status.code.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
+            <version>${commons.httpclient.version}</version>
         </dependency>
-
-
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>3.8.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>1.2</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -85,7 +73,6 @@
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
@@ -115,13 +102,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.17.1</version>
+            <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>de.danielbechler</groupId>
             <artifactId>java-object-diff</artifactId>
-            <version>0.95</version>
+            <version>${java.object.diff.version}</version>
         </dependency>
     </dependencies>
     <build>
