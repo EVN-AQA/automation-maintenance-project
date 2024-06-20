@@ -22,7 +22,6 @@
         <jackson.version>2.17.1</jackson.version>
         <java.object.diff.version>0.95</java.object.diff.version>
         <io.rest.assured.version>4.3.3</io.rest.assured.version>
-        <http.status.code.version>1.1.0</http.status.code.version>
         <commons.httpclient.version>3.1</commons.httpclient.version>
 
     </properties>
@@ -32,11 +31,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${io.rest.assured.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.deevvi</groupId>
-            <artifactId>http-status-code</artifactId>
-            <version>${http.status.code.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
@@ -103,11 +97,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.danielbechler</groupId>
-            <artifactId>java-object-diff</artifactId>
-            <version>${java.object.diff.version}</version>
         </dependency>
     </dependencies>
     <build>
