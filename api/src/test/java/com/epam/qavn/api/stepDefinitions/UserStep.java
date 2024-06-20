@@ -1,13 +1,12 @@
 package com.epam.qavn.api.stepDefinitions;
 
 import com.epam.qavn.api.core.GlobalConstant;
-import com.epam.qavn.api.models.user.CreateUserResponse_200;
-import com.epam.qavn.api.models.user.CreateUserResponse_400;
+import com.epam.qavn.api.models.ErrorResponse;
+import com.epam.qavn.api.models.user.CreateUserResponse;
 import com.epam.qavn.api.models.user.UserCredentialRequest;
 import com.epam.qavn.api.services.UserService;
 import com.epam.qavn.api.utils.JsonLoader;
 import com.epam.qavn.api.utils.RandomUtil;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
@@ -39,7 +38,7 @@ public class UserStep {
         Assert.assertEquals(HttpStatus.SC_CREATED, this.createUserResponse .statusCode());
         Assert.assertEquals(this.createUserResponse.contentType(), GlobalConstant.CONTENT_TYPE);
 
-        CreateUserResponse_200 userResponse = this.createUserResponse.body().as(CreateUserResponse_200.class);
+        CreateUserResponse userResponse = this.createUserResponse.body().as(CreateUserResponse.class);
         Assert.assertNotNull(userResponse.getUserID());
         Assert.assertEquals(userResponse.getUsername(), userCredentialRequest.userName);
         Assert.assertTrue(userResponse.getBooks().isEmpty());
@@ -53,9 +52,9 @@ public class UserStep {
         Assert.assertEquals(HttpStatus.SC_BAD_REQUEST, this.createUserResponse .statusCode());
         Assert.assertEquals(this.createUserResponse.contentType(), GlobalConstant.CONTENT_TYPE);
 
-        CreateUserResponse_400 userResponseActual = this.createUserResponse.body().as(CreateUserResponse_400.class);
+        ErrorResponse userResponseActual = this.createUserResponse.body().as(ErrorResponse.class);
         String filePath = "src/test/resources/testdata/CreateUserWithInvalidPassword.json";
-        CreateUserResponse_400 userResponseExpected = new JsonLoader().readJsonFile(filePath, CreateUserResponse_400.class);
+        ErrorResponse userResponseExpected = new JsonLoader().readJsonFile(filePath, ErrorResponse.class);
         Assert.assertEquals(userResponseExpected.getMessage(), userResponseActual.getMessage());
         Assert.assertEquals(userResponseExpected.getCode(), userResponseActual.getCode());
     }

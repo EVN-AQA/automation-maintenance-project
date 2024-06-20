@@ -1,18 +1,16 @@
-package com.epam.qavn.api.models.user;
-
-import com.epam.qavn.api.models.book.Book;
+package com.epam.qavn.api.models;
 
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class UserNotAuthorized {
+public class ErrorResponse {
 
     private String code;
     private String message;
-    public UserNotAuthorized() {
+    public ErrorResponse() {
     }
 
-    public UserNotAuthorized(String code, String message) {
+    public ErrorResponse(String code, String message) {
         super();
         this.code = code;
         this.message = message;
@@ -42,7 +40,7 @@ public class UserNotAuthorized {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        UserNotAuthorized userNotAuthorized = (UserNotAuthorized) obj;
+        ErrorResponse userNotAuthorized = (ErrorResponse) obj;
         return  (code == userNotAuthorized.code || (code != null && code.equals(userNotAuthorized.code)))&&
                 (message == userNotAuthorized.message || (message != null && message.equals(userNotAuthorized.message)));
     }

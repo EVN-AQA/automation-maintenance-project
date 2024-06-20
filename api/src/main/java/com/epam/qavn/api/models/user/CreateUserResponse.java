@@ -6,16 +6,16 @@ import javax.annotation.Generated;
 import java.util.List;
 
 @Generated("jsonschema2pojo")
-public class CreateUserResponse_200 {
+public class CreateUserResponse {
 
     private String userID;
     private String username;
     private List<Book> books;
 
-    public CreateUserResponse_200() {
+    public CreateUserResponse() {
     }
 
-    public CreateUserResponse_200(String userID, String username, List<Book> books) {
+    public CreateUserResponse(String userID, String username, List<Book> books) {
         super();
         this.userID = userID;
         this.username = username;

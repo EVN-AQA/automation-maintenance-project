@@ -4,13 +4,13 @@ import javax.annotation.Generated;
 import java.util.List;
 
 @Generated("jsonschema2pojo")
-public class AddBookResponse_200 {
+public class AddBookResponse {
     private List<CollectionOfIsbn> books;
 
-    public AddBookResponse_200() {
+    public AddBookResponse() {
     }
 
-    public AddBookResponse_200(List<CollectionOfIsbn> books) {
+    public AddBookResponse(List<CollectionOfIsbn> books) {
         super();
         this.books = books;
     }

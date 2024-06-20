@@ -2,8 +2,8 @@ package com.epam.qavn.api.stepDefinitions;
 
 import com.epam.qavn.api.core.GlobalConstant;
 import com.epam.qavn.api.models.book.*;
-import com.epam.qavn.api.models.user.CreateUserResponse_200;
-import com.epam.qavn.api.models.user.UserNotAuthorized;
+import com.epam.qavn.api.models.user.CreateUserResponse;
+import com.epam.qavn.api.models.ErrorResponse;
 import com.epam.qavn.api.services.BookService;
 import com.epam.qavn.api.utils.JsonLoader;
 import io.cucumber.java.en.Then;
@@ -36,7 +36,7 @@ public class BookStep {
         Assert.assertEquals(HttpStatus.SC_OK, this.listOfBooks .statusCode());
         Assert.assertEquals(this.listOfBooks.contentType(), GlobalConstant.CONTENT_TYPE);
 
-        ListOfBooksResponse_200 listOfBooksResponse = this.listOfBooks.body().as(ListOfBooksResponse_200.class);
+        ListOfBooksResponse listOfBooksResponse = this.listOfBooks.body().as(ListOfBooksResponse.class);
         String filePath = "src/test/resources/testdata/Book.json";
        Book bookExpected = new JsonLoader().readJsonFile(filePath, Book.class);
        Book bookActual = listOfBooksResponse.getBooks().get(0);
@@ -47,8 +47,8 @@ public class BookStep {
 
     @When("I add a book to a collection")
     public void addABookToACollection() {
-        String userId = ((CreateUserResponse_200) scenarioContext.getContext("UserResponse")).getUserID();
-        String firstIsbn = ((ListOfBooksResponse_200)scenarioContext.getContext("ListOfBook")).getBooks().get(0).getIsbn();
+        String userId = ((CreateUserResponse) scenarioContext.getContext("UserResponse")).getUserID();
+        String firstIsbn = ((ListOfBooksResponse)scenarioContext.getContext("ListOfBook")).getBooks().get(0).getIsbn();
         CollectionOfIsbn collectionOfIsbn = new CollectionOfIsbn(firstIsbn);
         AddBooksRequest addBooksRequest = new AddBooksRequest(userId, Collections.singletonList(collectionOfIsbn));
         String token = (String) scenarioContext.getContext("Token") ;
@@ -63,7 +63,7 @@ public class BookStep {
         Assert.assertEquals(HttpStatus.SC_OK, this.listOfBooks .statusCode());
         Assert.assertEquals(this.listOfBooks.contentType(), GlobalConstant.CONTENT_TYPE);
         String firstIsBnExpected = ((AddBooksRequest)scenarioContext.getContext("AddBookRequest")).getCollectionOfIsbns().get(0).getIsbn();
-        String firstIsBnActual= this.addBookResponse.body().as(AddBookResponse_200.class).getBooks().get(0).getIsbn();
+        String firstIsBnActual= this.addBookResponse.body().as(AddBookResponse.class).getBooks().get(0).getIsbn();
         Assert.assertEquals(firstIsBnActual, firstIsBnExpected);
     }
 
@@ -73,8 +73,8 @@ public class BookStep {
         Assert.assertEquals(this.listOfBooks.contentType(), GlobalConstant.CONTENT_TYPE);
 
         String filePath = "src/test/resources/testdata/UserNotAuthorized.json";
-        UserNotAuthorized userNotAuthorizedExpected = new JsonLoader().readJsonFile(filePath, UserNotAuthorized.class);
-        UserNotAuthorized userNotAuthorizedActual = this.addBookResponse.body().as(UserNotAuthorized.class);
+        ErrorResponse userNotAuthorizedExpected = new JsonLoader().readJsonFile(filePath, ErrorResponse.class);
+        ErrorResponse userNotAuthorizedActual = this.addBookResponse.body().as(ErrorResponse.class);
         Assert.assertTrue(userNotAuthorizedExpected.equals(userNotAuthorizedActual));
     }
 }
